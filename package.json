@@ -8,7 +8,7 @@
     "node": "v18.18.0"
   },
   "scripts": {
-    "start": "node server.js" 
+    "start": "node index.js" 
   },
   "author": "Emmanuel",
   "license": "ISC",
