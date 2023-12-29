@@ -29,6 +29,7 @@ const validate = async (req, res, next) => {
     if (token) {
         let payload = await decodeToken(token)
         req.headers.userId = payload.id
+        req.headers.userName = payload.firstName
         let currentTime = (+new Date()) / 1000
         if (currentTime < payload.exp) {
             next()

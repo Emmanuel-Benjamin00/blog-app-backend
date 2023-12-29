@@ -7,6 +7,7 @@ const blogSchema = new mongoose.Schema({
     description: { type: String, required: [true, "Description is required"] },
     status: { type: String, default: Status.PENDING },
     createdBy: { type: String, required: [true, "Created By is required"] },
+    nameofCreartedUser: { type: String, required: [true, "Name of created User is required"] },
     approvedBy: { type: String },
     modifiedAt: { type: Date },
     rejectedBy: { type: String },

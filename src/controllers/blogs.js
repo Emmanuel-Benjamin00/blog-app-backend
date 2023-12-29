@@ -13,7 +13,8 @@ const createBlog = async (req, res) => {
                 title,
                 imageUrl,
                 description,
-                createdBy: req.headers.userId
+                createdBy: req.headers.userId,
+                nameofCreartedUser: req.headers.userName
             })
             sendMail(admin.email)
             res.status(201).send({
@@ -93,7 +94,7 @@ const editBlog = async (req, res) => {
 
 const getAllBlogs = async (req, res) => {
     try {
-        let blogs = await blogModel.find({}, { _id: 1, title: 1, imageUrl: 1, createdAt: 1, status: 1 }).sort({ createdAt: 1 })
+        let blogs = await blogModel.find({}, { _id: 1, title: 1, imageUrl: 1, createdAt: 1, status: 1,description:1,nameofCreartedUser:1 }).sort({ createdAt: -1 })
         res.status(200).send({
             message: "Blogs Fetched Successfully",
             blogs
@@ -129,7 +130,7 @@ const getBlogById = async (req, res) => {
 
 const getBlogsByUserId = async (req, res) => {
     try {
-        let blogs = await blogModel.find({ createdBy: req.headers.userId }, { _id: 1, title: 1, imageUrl: 1, createdAt: 1, status: 1 }).sort({ createdAt: 1 })
+        let blogs = await blogModel.find({ createdBy: req.headers.userId }, { _id: 1, title: 1, imageUrl: 1, createdAt: 1, status: 1 }).sort({ createdAt: -1 })
         res.status(200).send({
             message: "Blogs Fetched Successfully",
             blogs
